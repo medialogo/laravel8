@@ -9,8 +9,12 @@ class BankbookController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Bankbook::all();
-        $banknames = ['', '横浜銀行','ゆうちょ'];
-        return view('bankbook.index', ['items' => $items, 'banks'=>$banknames]);
+        $bank_id = $request['bank_id'];
+        $items = Bankbook::where('bank_id', $bank_id)->get();
+        $banknames = ['', '横浜','郵貯'];
+        $notices = ['', 'Web','Web★', '','電話'];
+        $dones = ['未', '済'];
+        return view('bankbook.index', 
+            ['items' => $items, 'banks'=>$banknames, 'notices'=>$notices, 'dones'=>$dones]);
     }
 }
