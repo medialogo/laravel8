@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('title', 'Bankbook.index')
 
@@ -8,9 +8,8 @@
 @endsection
 
 @section('content')
+
 <table class="bankbook table-auto">
-  <tr><th class="">id</th>
-  <th class="w-1/12">銀行</th>
   <th class="w-1/24">連番</th>
   <th class="w-1/12">入金日</th>
   <th class="w-1/24">取引区分</th>
@@ -27,8 +26,6 @@
 </tr>
   @foreach ($items as $item) 
     <tr>
-      <td>{{$item->id}}</td>
-      <td>{{$banks[$item->bank_id]}}</td>
       <td>{{$item->transact_id}}</td>
       <td>{{$item->trans_date->format('m月d日') }}</td>
       <td>{{$item->trans_type}}</td>
