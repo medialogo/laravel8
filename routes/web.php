@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', 'dashboard');
+Route::get('/welcome', function() {
+  return view('welcome');
+});
+Route::get('/dummy', function() {
+  return view('dummy');
+});
 
 Route::get('dashboard', 'DashboardController@index')->middleware(['auth'])->name('dashboard');
 // Route::get('/dashboard', function () {
@@ -20,5 +26,6 @@ Route::get('dashboard', 'DashboardController@index')->middleware(['auth'])->name
 
 
 Route::get('bankbook', 'BankbookController@index')->middleware(['auth'])->name('bankbook');
+Route::get('kaiin', 'KaiinController@index')->middleware(['auth'])->name('kaiin');
 
 require __DIR__.'/auth.php';

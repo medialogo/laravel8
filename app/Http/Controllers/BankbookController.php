@@ -18,7 +18,7 @@ class BankbookController extends Controller
             $bank_id = 0;
         }
         
-        $items = Bankbook::where('bank_id', $bank_id)->get();
+        $items = Bankbook::with('Kaiin')->where('bank_id', $bank_id)->get();
         $banknames = ['', '横浜銀行','ゆうちょ銀行'];
         $bankabbrev = ['', '横浜','郵貯'];
         $notices = ['', 'Web','Web★', '','電話'];
