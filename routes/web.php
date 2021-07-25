@@ -28,4 +28,11 @@ Route::get('dashboard', 'DashboardController@index')->middleware(['auth'])->name
 Route::get('bankbook', 'BankbookController@index')->middleware(['auth'])->name('bankbook');
 Route::get('kaiin', 'KaiinController@index')->middleware(['auth'])->name('kaiin');
 
+Route::get('/mailable/{id}', function ($id) {
+  $renraku = App\Models\NkRenraku::find($id);
+
+  return new App\Mail\NkKakunin($renraku);
+});
+
+
 require __DIR__.'/auth.php';
