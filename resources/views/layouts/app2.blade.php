@@ -28,7 +28,7 @@
             </header>
             
             <!-- Page Content -->
-            <main>
+            <main class="mx-auto bg-white">
                 @yield('content')
             </main>
         </div>

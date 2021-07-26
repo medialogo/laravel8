@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Resources\NkrenrakuResource;
+use App\Models\NkRenraku;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/nkrenraku/{id}', function ($id) {
+    return new NkrenrakuResource(NkRenraku::where('id', '>', $id)->get());
+  })->name('getNewRenraku');
+
+
+Route::get('/nkrenraku', function () {
+  return new NkrenrakuResource(NkRenraku::all());
+});
+

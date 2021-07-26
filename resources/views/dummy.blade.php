@@ -21,3 +21,6 @@
     </div>
   </div>
 </div>
+<form action="/tokens/create" method="post">
+<input type=submit name="token create">
+</form>

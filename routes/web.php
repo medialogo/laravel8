@@ -1,5 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Resources\NkrenrakuResource;
+use App\Models\NkRenraku;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +32,19 @@ Route::get('dashboard', 'DashboardController@index')->middleware(['auth'])->name
 Route::get('bankbook', 'BankbookController@index')->middleware(['auth'])->name('bankbook');
 Route::get('kaiin', 'KaiinController@index')->middleware(['auth'])->name('kaiin');
 
+Route::get('renraku', 'NkRenrakuController@index')->middleware(['auth'])->name('renraku');
+Route::get('/renraku/new', 'NkRenrakuController@getNew')->middleware(['auth']);
+
 Route::get('/mailable/{id}', function ($id) {
   $renraku = App\Models\NkRenraku::find($id);
 
   return new App\Mail\NkKakunin($renraku);
 });
 
+
+Route::post('/tokens/create', function (Request $request) {
+  $token = $request->user()->createToken($request->token_name);
+  return ['token' => $token->plainTextToken];
+});
 
 require __DIR__.'/auth.php';
