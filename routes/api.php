@@ -21,10 +21,10 @@ Route::middleware('auth:api')->get('user', function (Request $request) {
 
 Route::get('/nkrenraku/{id}', function ($id) {
     return new NkrenrakuResource(NkRenraku::where('id', '>', $id)->get());
-  })->name('getNewRenraku');
+  })->name('getNewRenraku')->middleware('auth.basic');
 
 
 Route::get('/nkrenraku', function () {
-  return new NkrenrakuResource(NkRenraku::all());
+  return new NkrenrakuResource(NkRenraku::all())->middleware('auth.basic');
 });
 

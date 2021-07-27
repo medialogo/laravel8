@@ -8,39 +8,38 @@
 @endsection
 
 @section('content')
-<table class="bankbook table-auto">
-  <th class="w-1/24">連番</th>
-  <th class="w-1/12">入金日</th>
-  <th class="w-1/24">取引区分</th>
-  <th class="w-1/12">入金額</th>
-  <th class="w-1/12">通帳残高</th>
-  <th class="w-1/24">テキスト</th>
-  <th class="w-1/12">名簿ID</th>
-  <th class="w-1/24">組</th>
-  <th class="w-1/12">依頼人(姓)</th>
-  <th class="w-1/12">依頼人(名)</th>
-  <th class="w-1/24">入金連絡</th>
-  <th class="w-1/24">処理済</th>
+<table class="table-fixed">
+  <th class="px-4 py-2">連番</th>
+  <th class="px-4 py-2">入金日</th>
+  <th class="px-4 py-2">取引区分</th>
+  <th class="px-4 py-2">入金額</th>
+  <th class="px-4 py-2">通帳残高</th>
+  <th class="px-4 py-2">テキスト</th>
+  <th class="px-4 py-2">名簿ID</th>
+  <th class="px-4 py-2">組</th>
+  <th class="px-4 py-2">依頼人</th>
+  <th class="px-4 py-2">入金連絡</th>
+  <th class="px-4 py-2">処理済</th>
 </tr>
   @foreach ($items as $item) 
     <tr>
-      <td>{{$item->transact_id}}</td>
+      <td  class="border px-4 py-2">{{$item->transact_id}}</td>
       @if ($item->trans_date)
-        <td>{{$item->trans_date->format('m月d日') }}</td>
+        <td  class="border px-4 py-2">{{$item->trans_date->format('m月d日') }}</td>
       @else
-        <td></td>
+        <td  class="border px-4 py-2"></td>
       @endif      
-      <td>{{$item->trans_type}}</td>
-      <td>{{ number_format($item->amount)}}</td>
-      <td>{{ number_format($item->balance) }}</td>
-      <td>{{$item->trans_text}}</td>
-      <td>{{$item->meibo_id}}</td>
-        <td>{{$item->kaiin->kumi}}</td>
-        <td>{{$item->kaiin->fullname}}</td>
-      <!-- <td></td>
-        <td></td> -->
-      <td>{{$notices[$item->notice]}}</td>
-      <td>{{$dones[$item->done]}}</td>
+      <td  class="border px-4 py-2">{{$item->trans_type}}</td>
+      <td  class="border px-4 py-2">{{ number_format($item->amount)}}</td>
+      <td  class="border px-4 py-2">{{ number_format($item->balance) }}</td>
+      <td  class="border px-4 py-2">{{$item->trans_text}}</td>
+      <td  class="border px-4 py-2">{{$item->meibo_id}}</td>
+        <td  class="border px-4 py-2">{{$item->kaiin->kumi}}</td>
+        <td  class="border px-4 py-2">{{$item->kaiin->fullname}}</td>
+      <!-- <td  class="border px-4 py-2"></td>
+        <td  class="border px-4 py-2"></td> -->
+      <td  class="border px-4 py-2">{{$notices[$item->notice]}}</td>
+      <td  class="border px-4 py-2">{{$dones[$item->done]}}</td>
     </tr>
     @endforeach
 </table>
