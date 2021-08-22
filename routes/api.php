@@ -25,6 +25,6 @@ Route::get('/nkrenraku/{id}', function ($id) {
 
 
 Route::get('/nkrenraku', function () {
-  return new NkrenrakuResource(NkRenraku::all())->middleware('auth.basic');
-});
+  return new NkrenrakuResource(NkRenraku::all());
+})->middleware('auth.basic');
 

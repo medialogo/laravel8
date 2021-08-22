@@ -9,44 +9,44 @@
 
 @section('content')
 
-<table class="table-fixed">
-  <th class="px-4 py-2">id</th>
-  <th class="px-4 py-2">組</th>
-  <th class="px-4 py-2">連番</th>
-  <th class="px-4 py-2">世帯主名</th>
-  <th class="px-4 py-2">セタイヌシメイ</th>
-  <th class="px-4 py-2">入金日</th>
-  <th class="px-4 py-2">入金額</th>
-  <th class="px-4 py-2">振込先</th>
-  <th class="px-4 py-2">入金備考</th>
-  <th class="px-4 py-2">会員備考</th>
-  <th class="px-4 py-2">姓</th>
-  <th class="px-4 py-2">名</th>
-  <th class="px-4 py-2">セイ</th>
-  <th class="px-4 py-2">メイ</th>
+<table class="mx-auto table-fixed">
+  <th class="px-2 py-1">id</th>
+  <th class="px-2 py-1">組</th>
+  <th class="px-2 py-1">連番</th>
+  <th class="px-2 py-1">世帯主名</th>
+  <th class="px-2 py-1">セタイヌシメイ</th>
+  <th class="px-2 py-1">入金日</th>
+  <th class="px-2 py-1">入金額</th>
+  <th class="px-2 py-1">振込先</th>
+  <th class="px-2 py-1">入金備考</th>
+  <th class="px-2 py-1">会員備考</th>
+  <!-- <th class="px-2 py-1">姓</th>
+  <th class="px-2 py-1">名</th>
+  <th class="px-2 py-1">セイ</th>
+  <th class="px-2 py-1">メイ</th> -->
 </tr>
   @foreach ($items as $item) 
     <tr>
-      <td  class="border px-4 py-2">{{$item->id}}</td>
-      <td  class="border px-4 py-2">{{$item->kumi}}</td>
-      <td  class="border px-4 py-2">{{$item->kumi_no}}</td>
-      <td  class="border px-4 py-2">{{$item->fullname}}</td>
-      <td  class="border px-4 py-2">{{$item->fullname_kana}}</td>
+      <td  class="border text-center px-2 py-1">{{$item->id}}</td>
+      <td  class="border text-center px-2 py-1">{{$item->kumi}}</td>
+      <td  class="border text-center px-2 py-1">{{$item->kumi_no}}</td>
+      <td  class="border px-2 py-1">{{$item->fullname}}</td>
+      <td  class="border px-2 py-1">{{$item->fullname_kana}}</td>
       @if ($item->bankbook)
-        <td  class="border px-4 py-2">{{$item->bankbook->trans_date->format('m月d日') }}</td>
-        <td  class="border px-4 py-2">{{ number_format($item->bankbook->amount) }}</td>
-        <td  class="border px-4 py-2">{{ $banks[$item->bankbook->bank_id] }}</td>
+        <td  class="border px-2 py-1">{{$item->bankbook->trans_date->format('m/d') }}</td>
+        <td  class="border px-2 py-1">{{ number_format($item->bankbook->amount) }}</td>
+        <td  class="border px-2 py-1">{{ $banks[$item->bankbook->bank_id] }}</td>
       @else
-        <td  class="border px-4 py-2"></td>
-        <td  class="border px-4 py-2"></td>
-        <td  class="border px-4 py-2"></td>
+        <td  class="border px-2 py-1"></td>
+        <td  class="border px-2 py-1"></td>
+        <td  class="border px-2 py-1"></td>
       @endif
-      <td  class="border px-4 py-2">{{$item->memo1}}</td>
-      <td  class="border px-4 py-2">{{$item->memo2}}</td>
-      <td  class="border px-4 py-2">{{$item->name_sei}}</td>
-      <td  class="border px-4 py-2">{{$item->name_mei}}</td>
-      <td  class="border px-4 py-2">{{$item->name_sei_kana}}</td>
-      <td  class="border px-4 py-2">{{$item->name_mei_kana}}</td>
+      <td  class="border px-2 py-1">{{$item->memo1}}</td>
+      <td  class="border px-2 py-1">{{$item->memo2}}</td>
+      <!-- <td  class="border px-2 py-1">{{$item->name_sei}}</td>
+      <td  class="border px-2 py-1">{{$item->name_mei}}</td>
+      <td  class="border px-2 py-1">{{$item->name_sei_kana}}</td>
+      <td  class="border px-2 py-1">{{$item->name_mei_kana}}</td> -->
     </tr>
     @endforeach
 </table>
